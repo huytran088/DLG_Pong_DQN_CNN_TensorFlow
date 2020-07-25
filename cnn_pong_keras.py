@@ -97,7 +97,8 @@ def play():
     train_episodes = 700
 
     # hyperparameters
-    epoch_update_weight = 1024 # initially used for updating model weights after a number of episodes. Default is 10, you can change it depends on the optimizer is used
+    epoch_update_weight = 1024 # The number of training samples to work through before the model’s weights are updated
+    epochs_number = 7 # the number times that the learning algorithm will work through the entire training dataset. 
     gamma = 0.99 # discount factor for reward
     decay_rate = 0.99 # the exploitation rate of the agent
     learning_rate = 1e-4 # pass in create_model(lr) to set the learning_rate for the optimizer
@@ -158,7 +159,7 @@ def play():
                              y=np.vstack(episode_actions),
                              batch_size=epoch_update_weight,
                              verbose=1,
-                             epochs=1,
+                             epochs=epochs_number,
                              sample_weight=episode_action_reward_discounted
                              )
             loss_buffer.append(hist.history['loss'])
