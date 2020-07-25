@@ -85,7 +85,7 @@ def play():
     train_episodes = 700
 
     # hyperparameters
-    epoch_update_weight = 32 # the number of episode before updating the model's weights
+    epoch_update_weight = 1500 # tthe number of training samples to work through before the model’s weights are updated
     epochs_number = 3 # the number times that the learning algorithm will work through the entire training dataset. 
     gamma = 0.99 # discount factor for reward
     decay_rate = 0.99 # the exploitation rate of the agent
