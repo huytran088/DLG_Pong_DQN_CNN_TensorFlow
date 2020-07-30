@@ -114,7 +114,7 @@ def play():
     input_dimensions = (80,80,1)
     model = create_model(learning_rate,input_dimensions)
     if resume:
-        path = os.path.join('pong_model_checkpoint.h5')
+        path = os.path.join('pong_model_CNN_checkpoint.h5')
         model.load_weights(path)
     epochs_before_saving = 100 # use for saving model weight every 100 episodes
 
@@ -165,9 +165,9 @@ def play():
             loss_buffer.append(hist.history['loss'])
             # Saving the weights used by our model
             if episode_number % epochs_before_saving == 0:
-                if os.path.exists('pong_model_checkpoint.h5'):
-                    os.remove('pong_model_checkpoint.h5')
-                model.save_weights('pong_model_checkpoint.h5')
+                if os.path.exists('pong_model_CNN_checkpoint.h5'):
+                    os.remove('pong_model_CNN_checkpoint.h5')
+                model.save_weights('pong_model_CNN_checkpoint.h5')
 
             observation = env.reset()  # reset env
             # simutaniously let the angent to explore the environment at .01 rate and exploit the environment at .99 rate
